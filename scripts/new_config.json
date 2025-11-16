@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "wifi": {"ssid":"HomeNet","password":"changeme123","guest_ssid":"HomeNet-Guest","guest_password":"guest12345"},
+  "rules": [{"id":"r1","type":"url_block","value":"tiktok.com","enabled":true}],
+  "qos": {"min_per_client_mbps":10,"wan_to_lan_min_mbps":300,"p95_latency_ms_max":60},
+  "ports": {"wan": 1, "lan": 2}
+}

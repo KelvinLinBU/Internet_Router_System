@@ -1,0 +1,49 @@
+services:
+  orch:
+    build: { context: .., dockerfile: services/orchestration/Dockerfile }
+    container_name: orch
+    environment: [ PYTHONUNBUFFERED=1, PYTHONPATH=/app ]
+    command: uvicorn services.orchestration.main:app --host 0.0.0.0 --port 8000
+    ports: ["8000:8000"]
+
+  ds:
+    build: { context: .., dockerfile: services/datastore/Dockerfile }
+    container_name: ds
+    environment: [ PYTHONUNBUFFERED=1, PYTHONPATH=/app ]
+    command: uvicorn services.datastore.main:app --host 0.0.0.0 --port 8000
+    ports: ["8001:8000"]
+
+  security:
+    build: { context: .., dockerfile: services/security/Dockerfile }
+    container_name: security
+    environment: [ PYTHONUNBUFFERED=1, PYTHONPATH=/app ]
+    command: uvicorn services.security.main:app --host 0.0.0.0 --port 8000
+    ports: ["8002:8000"]
+
+  connectivity:
+    build: { context: .., dockerfile: services/connectivity/Dockerfile }
+    container_name: connectivity
+    environment: [ PYTHONUNBUFFERED=1, PYTHONPATH=/app ]
+    command: uvicorn services.connectivity.main:app --host 0.0.0.0 --port 8000
+    ports: ["8003:8000"]
+
+  update:
+    build: { context: .., dockerfile: services/update/Dockerfile }
+    container_name: update
+    environment: [ PYTHONUNBUFFERED=1, PYTHONPATH=/app ]
+    command: uvicorn services.update.main:app --host 0.0.0.0 --port 8000
+    ports: ["8004:8000"]
+
+  energy:
+    build: { context: .., dockerfile: services/energy/Dockerfile }
+    container_name: energy
+    environment: [ PYTHONUNBUFFERED=1, PYTHONPATH=/app ]
+    command: uvicorn services.energy.main:app --host 0.0.0.0 --port 8000
+    ports: ["8005:8000"]
+
+  ui:
+    build: { context: .., dockerfile: services/ui/Dockerfile }
+    container_name: ui
+    environment: [ PYTHONUNBUFFERED=1, PYTHONPATH=/app ]
+    command: uvicorn services.ui.main:app --host 0.0.0.0 --port 8000
+    ports: ["3000:8000"]
